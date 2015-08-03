@@ -1,38 +1,44 @@
 <!DOCTYPE html>	
 <html>
 <head>
-	<link rel="stylesheet" href="CSS/style.css">
+	<link rel="stylesheet" href="CSS/materialize.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<meta charset="utf-8" />
 	<title>
 		Chamberos.net
 	</title>
 </head>
-	<div class="titulo">
-		<h1 class="centrado">Chamberos.net - Dashboard </h1>
-	</div>
-	<div class="dash-menu"> 
-		<br>
-		<ol class="sinborde">
-			<li class="dash-menu-borde-blaco"><a class="blanco" href="user.html">CLIENTES</a></li>
-			<li class="dash-menu-borde-blaco"><a class="blanco" href="chambas.html">CHAMBAS</a></li>
-			<li class="dash-menu-borde-blaco"><a class="blanco" href="invoices.html">INVOICES</a></li>
-			<h3>HI</h3>
-			<img src="IMG/user.png"> </img>
-			
-		</ul>
-		<br>
-	</div>
-	<div class="dash-welcome"><h2>WELCOME FRIEND </h2>
-	</div>
-	<br>
-	<br>
-	<div class="dash-img"> 
-		<center>
-		<a href="user.html"><img src="IMG/clients.png"></img></a> 
-		<a href="chambas.html"><img src="IMG/folder.png"></img></a>
-		<a href="invoices.html"><img src="IMG/invoices.png"></img></a>
-	</div>
-		
 <body>
+<div class="card-panel teal lighten-2">
+	<h2>Chamberos.net</h2>
+<nav>
+  <ul class="left hide-on-med-and-down">
+    <li><a href="user.html">CLIENTES</a></li>
+    <li><a href="chambas.html">CHAMBAS</a></li>
+    <li><a href="invoices.html">INVOICES</a></li>
+  </ul>
+  <ul id="slide-out" class="side-nav">
+    <li><a href="user.html">CLIENTES</a></li>
+    <li><a href="chambas.html">CHAMBAS</a></li>
+    <li><a href="invoices.html">INVOICES</a></li>
+  </ul>
+  <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+</nav>
+
+</div>
+
+	<div class="red lighten-5">
+	<br>
+	<br>	
+	</div>
+	<!-- Cargamos jQuery y materialize js -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="js/materialize.min.js"></script>
+<script>
+ 	$(document).ready(function () {
+ 		//Menú responsivo
+		$('.button-collapse').sideNav();
+	});
+ </script>
 </body>
 </html>

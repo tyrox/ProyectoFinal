@@ -1,78 +1,72 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta content="text/html; charset=utf-8" http-equiv="content-type">
     <link rel="stylesheet" href="CSS/materialize.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   
     
     <title> Chamberos.net </title>
-  </head>
-  <body>
-    <div class="backgroundgris">
-        <h1 class="centrado">Chamberos.net - Clients Administration </h1>
-    </div>
-    <div class="dash-menu">
-      <br> 
-      <ol class="sinborde">
-        <li class="borde-naranja"><a class="fondoblanco">CLIENTES</a></li>
-        <li class="dash-menu-borde-blaco"><a class="blanco" href="chambas.html">CHAMBAS</a></li>
-        <li class="dash-menu-borde-blaco"><a class="blanco" href="invoices.html">INVOICES</a></li>
-        <a href="dash.html"><h3>HI</h3></a>
-        <img src="IMG/user.png"> </img>
-      </ul>
-      <br>
-    </div>
+</head>
+<body class="card-panel teal lighten-5">
+  <h2>Chamberos.net - Clients Administration</h2>
+  <!-- MENU --> 
+<nav>
+  <ul class="left hide-on-med-and-down">
+    <li>CLIENTES</li>
+    <li><a href="chambas.html">CHAMBAS</a></li>
+    <li><a href="invoices.html">INVOICES</a></li>
+  </ul>
+  <ul id="slide-out" class="side-nav">
+    <li><a href="">CLIENTES</a></li>
+    <li><a href="chambas.html">CHAMBAS</a></li>
+    <li><a href="invoices.html">INVOICES</a></li>
+  </ul>
+  <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+</nav>
+  <!-- IMAGEN + CLIENTE + B NUEVO --> 
     <div class="div-centrado">
       <ul>
         <li class="sinpunto">
           <img class="float-izq" src="IMG/clients.png"></img>
-          <br> <br>
-          <h1 class="naranja-grueso">CLIENTS</h1>
-          <a href="newcliente.html"><input class=" boton-amarillo" type="button" value="New Client"></input></a>
+          <br>
+          
         </li>
+        <li><h1 class="naranja-grueso">CLIENTS</h1></li>
       </ul>
     </div>
     </br>
     </br>
     </br>
     </br>
-    <div>
+    <!-- La tabla --> 
+    <div class="card-panel">
       <center>
       <table class="responsive-table">
         <thead>
         <tr >
             <th>ID</th>
             <th>Full Name</th>
-            <th class="">Actions</th>
         </tr>
         </thead>
         <tbody>
         <tr >
             <td>104290908</td>
             <td>Yamma Luna</td>
-            <td>
-              <a href="client_edit.html"><img class="" src="IMG/pencil.png"></img></a>
-              <a href="client_delete.html"><img class="" src="IMG/trash.png"></img></a>
-            </td>
         </tr>
         <tr >
             <td>202300291</td>
             <td>Bladimir Arroyo</td>
-            <td>
-              <a class="waves-effect waves-light btn" onclick="Materialize.toast('<span>Item modificado</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;#!&quot;>Deshacer<a>', 5000)">Modificar</a>
-              <a href="client_edit.html"><img class="" src="IMG/pencil.png"></img></a>
-              <a href="client_delete.html">
-                <img class="" src="IMG/trash.png"></img></a>
-            </td>
         </tr>
         </tbody>
     </table>
     </div>
-    <!-- Modal Trigger -->
-  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Borrar</a>
 
-  <!-- Modal Structure -->
+    <!-- BOTONES --> 
+    <a href="newcliente.html" class="waves-effect waves-light btn">NUEVO</a>
+    <a class="waves-effect waves-light btn" onclick="Materialize.toast('<span>Item modificado</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;#!&quot;>Deshacer<a>', 5000)">Modificar</a>
+    <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Borrar</a>
+  <!-- Modal Structure -->  
   <div id="modal1" class="modal">
     <div class="modal-content">
       <h4>Borrar</h4>
@@ -90,6 +84,7 @@
    $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal-trigger').leanModal();
+    $('.button-collapse').sideNav();
   });
   </script>
   </body>

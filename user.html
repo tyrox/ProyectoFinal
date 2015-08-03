@@ -2,7 +2,9 @@
 <html>
   <head>
     <meta content="text/html; charset=utf-8" http-equiv="content-type">
-    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/materialize.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
     
     <title> Chamberos.net </title>
   </head>
@@ -37,16 +39,16 @@
     </br>
     <div>
       <center>
-      <table class="tabla">
+      <table class="responsive-table">
         <thead>
-        <tr class="back-th">
+        <tr >
             <th>ID</th>
             <th>Full Name</th>
             <th class="">Actions</th>
         </tr>
         </thead>
         <tbody>
-        <tr class="tr">
+        <tr >
             <td>104290908</td>
             <td>Yamma Luna</td>
             <td>
@@ -54,16 +56,41 @@
               <a href="client_delete.html"><img class="" src="IMG/trash.png"></img></a>
             </td>
         </tr>
-        <tr class="tr">
+        <tr >
             <td>202300291</td>
             <td>Bladimir Arroyo</td>
             <td>
+              <a class="waves-effect waves-light btn" onclick="Materialize.toast('<span>Item modificado</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;#!&quot;>Deshacer<a>', 5000)">Modificar</a>
               <a href="client_edit.html"><img class="" src="IMG/pencil.png"></img></a>
-              <a href="client_delete.html"><img class="" src="IMG/trash.png"></img></a>
+              <a href="client_delete.html">
+                <img class="" src="IMG/trash.png"></img></a>
             </td>
         </tr>
         </tbody>
     </table>
     </div>
+    <!-- Modal Trigger -->
+  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Borrar</a>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Borrar</h4>
+      <p>Está seguro que quiere borrar el cliente?</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">No</a>
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Si</a>
+    </div>
+  </div>
+</br>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="js/materialize.min.js"></script>
+<script>
+   $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+  });
+  </script>
   </body>
 </html>

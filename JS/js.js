@@ -1,4 +1,16 @@
 
+function validateUser() {
+	alert("Hola");
+	var username = document.getElementById('user').value;
+	var password = document.getElementById('password').value;
+	var errorElement = document.getElementById('error_msg');
+	alert("Hola");
+	if (username == '12' && password == '12') {		
+		alert("Hola");
+	} else {
+		alert("error");
+	}	
+}
 
 function solonumeros(e){
 	key=e.keycode || e.which;
@@ -14,4 +26,27 @@ function solonumeros(e){
 	if(numeros.indexOf(teclado)==-1 && !teclado_especial){// en esta parte pusiste indexof todo con minusculas y debe ser el Of con mayuscula
 		return false;
 	}
+}
+function dce(e) {
+	return document.createElement(e);
+}
+
+function crearColumna(name, id, fila) {
+	td =dce('td');
+	input = dce('input');
+	input.type = 'text';
+	input.setAttribute('name', 'txt_' + name);
+	input.setAttribute('id', 'txt_' + name + '_' + fila);
+	td.appendChild(input);
+	return td;
+}
+var n_fila = 0;
+function agregarFila(){
+	destino = document.getElementById('tbCuerpo');
+	tr = dce('tr');
+	tr.appendChild(crearColumna('id', n_fila));
+	tr.appendChild(crearColumna('name', n_fila));
+
+	destino.appendChild(tr);
+	n_fila++;
 }

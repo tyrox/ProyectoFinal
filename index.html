@@ -1,36 +1,46 @@
 <!DOCTYPE html>	
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="CSS/style.css">
+	<link rel="stylesheet" href="CSS/materialize.css">
 	<meta charset="utf-8" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<title>
 		Chamberos.net
 	</title>
 	
 </head>
-<body>
-	<div class="titulo">
-		<h1 class="centrado">Chamberos.net - Login </h1>
+<body class="card-panel">	
+	<div class="card-panel teal lighten-4">
+		<h3 class="card-panel teal lighten-2">WELCOME TO CHAMBEROS.NET</h3>
+		<div class="card-panel teal lighten-5">
+ 			<div class="row">
+ 				<h4>LOGIN</h4>
+ 				<hr>
+    			<form class="col s12" action="dash.html">
+	      			<div class="row">
+				        <div class="input-field col s6">
+        	  				<input id="user" type="text" class="validate" required>
+          					<label for="user">User</label>
+	        			</div>
+    	    			<div class="input-field col s6">
+        	  				<input id="password" type="password" class="validate" required>
+          					<label for="password">Password</label>
+        				</div>
+      				</div>
+      				<button class="btn waves-effect waves-light" type="submit" name="action" onclick="validateUser();">OK
+  					</button>
+    			</form>
+  			</div>
+  		</div>
 	</div>
-	<br>
-	<br>
-	<br>
-		<h1 class="centrado-naranja">WELCOME TO CHAMBEROS.NET</h1>
-	
-	<div class="cuadro">				
-		<div class="login-cuadro">
-			<h2>Login</h2>
-		</div>
-		<div align="center">
-			<br>
-			<form action="dash.html">
-				<input class="login" > </input> <br> <br>
-				<input class="login" type="password" > </input> <br> 
-				<input class="boton-naranja" type="submit" value="              " /> <br>
-				<br>
-				<br>
-			</form>
-		</div>
-	</div>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="JS/materialize.js"></script>
+	<script>
+
+   		$(document).ready(function(){
+   			$('.button-collapse').sideNav();
+   			$('.tooltipped').tooltip({delay: 50});
+  	});
+  </script>
 </body>
 </html>

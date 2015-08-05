@@ -1,6 +1,6 @@
 var FUNCION = FUNCION || {
 
-	function validateUser(username,password) {
+	var validateUser = function (username,password) {
 		var username = document.getElementById('username').value;
 		var password = document.getElementById('password').value;
 		var errorElement = document.getElementById('error_msg')
@@ -14,14 +14,14 @@ var FUNCION = FUNCION || {
 		}	
 	}
 
-	function solonumeros(e){
-	key=e.keycode || e.which;
-	teclado=String.fromCharCode(key);
-	numeros="0123456789";
-	especiales="8-37-38-46";//en esta parte pusiste espeeciales, osea lo pusiste con doble e y más abajo utilizas solo con una e.
-	teclado_especial=false;
-	for(var i in especiales){
-		if(key==especiales[i]){
+	var solonumeros = function (e){
+		key=e.keycode || e.which;
+		teclado=String.fromCharCode(key);
+		numeros="0123456789";
+		especiales="8-37-38-46";//en esta parte pusiste espeeciales, osea lo pusiste con doble e y más abajo utilizas solo con una e.
+		teclado_especial=false;
+		for(var i in especiales){
+			if(key==especiales[i]){
 			teclado_especial=true;
 		}
 	}
@@ -30,7 +30,7 @@ var FUNCION = FUNCION || {
 		return false;
 	}
 
-	function listado(){
+/*	var list = function(){
 		if (!window.localStorage) {
 		  Object.defineProperty(window, "localStorage", new (function () {
 		    var aKeys = [], oStorage = {};
@@ -49,7 +49,7 @@ var FUNCION = FUNCION || {
 		    Object.defineProperty(oStorage, "setItem", {
 		      value: function (sKey, sValue) {
 		        if(!sKey) { return; }
-		        document.cookie = escape(sKey) + "=" + escape(sValue) + "; expires=Tue, 19 Jan 2038 03:14:07 GMT; path=/";
+		        document.cookie = escape(sKey) + "=" + escape(sValue);
 		      },
 		      writable: false,
 		      configurable: false,
@@ -63,7 +63,7 @@ var FUNCION = FUNCION || {
 		    Object.defineProperty(oStorage, "removeItem", {
 		      value: function (sKey) {
 		        if(!sKey) { return; }
-		        document.cookie = escape(sKey) + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+		        document.cookie = escape(sKey);
 		      },
 		      writable: false,
 		      configurable: false,
@@ -78,8 +78,8 @@ var FUNCION = FUNCION || {
 		        delete oStorage[sKey];
 		      }
 		      for (aKeys; aKeys.length > 0; aKeys.splice(0, 1)) { oStorage.removeItem(aKeys[0]); }
-		      for (var aCouple, iKey, nIdx = 0, aCouples = document.cookie.split(/\s*;\s*/); nIdx < aCouples.length; nIdx++) {
-		        aCouple = aCouples[nIdx].split(/\s*=\s*/);
+		      for (var aCouple, iKey, nIdx = 0, aCouples = document.cookie.split(/\s*;\s); nIdx < aCouples.length; nIdx++) {
+		        aCouple = aCouples[nIdx].split(/\s*=\s);
 		        if (aCouple.length > 1) {
 		          oStorage[iKey = unescape(aCouple[0])] = unescape(aCouple[1]);
 		          aKeys.push(iKey);
@@ -90,12 +90,11 @@ var FUNCION = FUNCION || {
 		    this.configurable = false;
 		    this.enumerable = true;
 		  })());
-		}
-	}
-
-	function newClient(pId,pFirstName,pLastName,pPhone){
+		}}
+*/
+	 var newClient = function(pId,pFirstName,pLastName,pPhone){
 		
-		this.Id=pId;
+		var pId=document.getElementById("demo").value();
 		this.firstName = pFirstName;
 	  	this.LastName = pLastName;
 	  	this.Phone = pPhone;
@@ -107,7 +106,7 @@ var FUNCION = FUNCION || {
 		var obj = JSON.parse(text);
 	}
 
-	function newChamba(pClient,pDescrption,pDate,pNote){
+	var newChamba = function(pClient,pDescrption,pDate,pNote){
 		this.client = pClient;
 		this.descrption= pDescrption;
 		this.date=pDate;
@@ -121,22 +120,14 @@ var FUNCION = FUNCION || {
 		} 
 		var obj = JSON.parse(text);
 	}
-	function newInvoice(pClient,pDescrption,pDate,pNote){
+	var newInvoice = function (pClient,pDescrption,pDate,pNote){
 		this.client = pClient;
 		this.descrption= pDescrption;
 		this.date=pDate;
 		this.note=pNote;
-
-		var text = {
-			"client: "this.client;
-			"descrption: "this.descrption;
-			"date: "this.date;
-			"note: "this.note;
-		} 
-		var obj = JSON.parse(text);
 	}
 
-	function newUser(pID,pFirstName,pLastName,pPhone){
+	var newUser  = function(pID,pFirstName,pLastName,pPhone){
 		this.Id=pId;
 		this.firstName = pFirstName;
 		this.LastName = pLastName;
@@ -149,11 +140,11 @@ var FUNCION = FUNCION || {
 		var obj = JSON.parse(text);
 	}
 
-	function dce(e) {
+	var dce =function (e) {
 		return document.createElement(e);
 	}
 
-	function crearColumna(name, id, fila) {
+	var crearColumna = function (name, id, fila) {
 		td =dce('td');
 		input = dce('input');
 		input.type = 'text';
@@ -162,9 +153,10 @@ var FUNCION = FUNCION || {
 		td.appendChild(input);
 		return td;
 	}
-	
+
 	var n_fila = 0;
-	function agregarFila(){
+
+	var agregarFila = function (){
 		destino = document.getElementById('tbCuerpo');
 		tr = dce('tr');
 		tr.appendChild(crearColumna('id', n_fila));

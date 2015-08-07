@@ -1,18 +1,13 @@
-var FUNCION = FUNCION || {
-
-	var validateUser = function (username,password) {
-		var username = document.getElementById('username').value;
-		var password = document.getElementById('password').value;
-		var errorElement = document.getElementById('error_msg')
-
-		if (username == 'admin' && password == 'password') {
-			console.log('logged in')
-			errorElement.setAttribute("style","display:none;");
-		} else {
-			errorElement.innerHTML = 'Username or Password invalid';
-			errorElement.setAttribute("style","display:block;");
-		}	
-	}
+function validateUser() {
+	var username = document.getElementById('user').value;
+	var password = document.getElementById('password').value;
+	var errorElement = document.getElementById('error_msg');
+	if (username == '12' && password == '12') {		
+		console.log('dash.html');
+	} else {
+		alert("error");
+	}	
+}
 
 	var solonumeros = function (e){
 		key=e.keycode || e.which;
@@ -29,6 +24,35 @@ var FUNCION = FUNCION || {
 	if(numeros.indexOf(teclado)==-1 && !teclado_especial){// en esta parte pusiste indexof todo con minusculas y debe ser el Of con mayuscula
 		return false;
 	}
+}
+
+var usuarios = [];
+var objUser = {
+	Id: 0,
+	Nombre: "",
+	Tel: ""
+};
+
+function guardarU(){
+	var nombre = document.getElementById('nombre').value;
+	var id = document.getElementById('id').value;
+	var tel = document.getElementById('tel').value;
+	var usuarios=JSON.parse(localStorage['usuarios']);
+	if (nombre == '' || id == '' || tel =='') {
+		alert("Ingresar datos");
+	}
+	else {
+		objUser.Id=id;
+		objUser.Nombre=nombre;
+		objUser.Tel=tel;
+		usuarios.push(objUser);
+		localStorage['usuarios']=JSON.stringify(usuarios);
+		console.log(usuarios);
+		
+	}
+}
+
+
 
 /*	var list = function(){
 		if (!window.localStorage) {
@@ -91,7 +115,7 @@ var FUNCION = FUNCION || {
 		    this.enumerable = true;
 		  })());
 		}}
-*/
+
 	 var newClient = function(pId,pFirstName,pLastName,pPhone){
 		
 		var pId=document.getElementById("demo").value();
@@ -165,4 +189,4 @@ var FUNCION = FUNCION || {
 		destino.appendChild(tr);
 		n_fila++;
 	}
-}		
+}*/		

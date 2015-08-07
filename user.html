@@ -39,6 +39,24 @@
     </br>
     </br>
     </br>
+    <div>
+      <form class="col s12" action="dash.html">
+              <div class="row">
+                <div class="input-field col s4">
+                    <input id="id" type="text" class="validate" required>
+                    <label for="user">ID</label>
+                </div>
+                <div class="input-field col s4">
+                    <input id="nombre" type="text" class="validate" required>
+                    <label for="password">Name</label>
+                </div>
+                <div class="input-field col s4">
+                    <input id="tel" type="text" class="validate" required>
+                    <label for="tel">Phone</label>
+                </div>
+              </div>
+          </form>
+    </div>
     <!-- La tabla --> 
     <div  class="card-panel teal lighten-4">
       <center>
@@ -47,6 +65,7 @@
           <tr >
               <th>ID</th>
               <th>Full Name</th>
+              <th>Phone</th>
               <td>
                 <button type="button" onclick="agregarFila();"></button>
               </td>
@@ -67,7 +86,7 @@
     </div>
 
     <!-- BOTONES --> 
-    <a onclick="agregarFila();" class="waves-effect waves-light btn">NEW</a>
+    <a onclick="guardarU();" class="waves-effect waves-light btn">NEW</a>
     <a class="waves-effect waves-light btn" onclick="Materialize.toast('<span>Item modificado</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;#!&quot;>Deshacer<a>', 5000)">EDIT</a>
     <a class="waves-effect waves-light btn modal-trigger" href="#modal1">DELETE</a>
   <!-- Modal Structure -->  
@@ -84,6 +103,7 @@
 </br>
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
+<script type="text/javascript" src="JS/javascrip.js"></script>
 <script>
    $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered

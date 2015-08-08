@@ -57,38 +57,16 @@
               </div>
           </form>
     </div>
+    
     <!-- La tabla --> 
-    <div  class="card-panel teal lighten-4">
-      <center>
-      <table id="tbdatos" class="responsive-table">
-        <thead>
-          <tr >
-              <th>ID</th>
-              <th>Full Name</th>
-              <th>Phone</th>
-              <td>
-                <button type="button" onclick="agregarFila();"></button>
-              </td>
-
-          </tr>
-        </thead>
-        <tbody id="tbCuerpo">
-        
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="3">
-              <button type="button">Guardar</button>
-            </td>
-          </tr>
-        </tfoot>
-      </table>
+    <div  class="card-panel teal lighten-4" id="dvcontainer">
+      
     </div>
 
     <!-- BOTONES --> 
-    <a onclick="guardarU();" class="waves-effect waves-light btn">NEW</a>
+    <a onclick="guardarC();" class="waves-effect waves-light btn">NEW</a>
     <a class="waves-effect waves-light btn" onclick="Materialize.toast('<span>Item modificado</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;#!&quot;>Deshacer<a>', 5000)">EDIT</a>
-    <a class="waves-effect waves-light btn modal-trigger" href="#modal1">DELETE</a>
+    <a onclick="cargarTabla();" class="waves-effect waves-light btn modal-trigger" href="#modal1">DELETE</a>
   <!-- Modal Structure -->  
   <div id="modal1" class="modal">
     <div class="modal-content">

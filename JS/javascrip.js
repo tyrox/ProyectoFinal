@@ -26,31 +26,60 @@ function validateUser() {
 	}
 }
 
-var usuarios = [];
+var LClientes = new Array();
 var objUser = {
 	Id: 0,
 	Nombre: "",
 	Tel: ""
 };
 
-function guardarU(){
+function guardarC(){
 	var nombre = document.getElementById('nombre').value;
 	var id = document.getElementById('id').value;
 	var tel = document.getElementById('tel').value;
-	var usuarios=JSON.parse(localStorage['usuarios']);
 	if (nombre == '' || id == '' || tel =='') {
 		alert("Ingresar datos");
 	}
+	else if ((localStorage.getItem('LClientes') == null)) {
+			objUser.Id=id;
+			objUser.Nombre=nombre;
+			objUser.Tel=tel;
+			LClientes.push(objUser);
+			localStorage['LClientes']=JSON.stringify(LClientes);
+			console.log(LClientes);
+		}
 	else {
-		objUser.Id=id;
-		objUser.Nombre=nombre;
-		objUser.Tel=tel;
-		usuarios.push(objUser);
-		localStorage['usuarios']=JSON.stringify(usuarios);
-		console.log(usuarios);
-		
+			var LClientes=JSON.parse(localStorage['LClientes']);
+			objUser.Id=id;
+			objUser.Nombre=nombre;
+			objUser.Tel=tel;
+			LClientes.push(objUser);
+			localStorage['LClientes']=JSON.stringify(LClientes);
+			console.log(LClientes);
 	}
-}
+};
+
+function cargarTabla() {
+    var listaC = JSON.parse(localStorage['LClientes']);
+    var cont = listaC.length;
+    if (cont > 0)
+    {
+      var render =  "<table class='tbdatos' Id ='tbl1'> <thead><tr><th>Id</th><th>Name</th><th>Phone</th></tr> </thead>";
+        render+="<tbody>";
+
+        for (i = 0; i < cont; i++) {
+            var obj =  listaC[i];
+                  render += "<tr>";
+                  render += "<td>" + obj.Id + "</td>";
+                  render+= "<td>" + obj.Nombre + " </td>";
+                  render += "<td>" + obj.Tel+ "</td>";
+                  render += "</tr>";
+        }
+          render+="</tbody";
+        render+="</table>";
+        dvcontainer.innerHTML = render;
+    }
+};
 
 
 

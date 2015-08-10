@@ -1,16 +1,20 @@
 
-function validateUser() {
-	alert("Hola");
+function login() {
 	var username = document.getElementById('user').value;
 	var password = document.getElementById('password').value;
-	var errorElement = document.getElementById('error_msg');
-	alert("Hola");
-	if (username == '12' && password == '12') {		
-		alert("Hola");
-	} else {
-		alert("error");
+	//window.location.href="dash.html";
+
+	if (username != '12' || password != '12') {		
+			alert("Error");
+			return;
+	}
+	 else {
+		alert("Entraste");
+		window.open("dash.html");
+		return;
+		
 	}	
-}
+};
 
 function solonumeros(e){
 	key=e.keycode || e.which;

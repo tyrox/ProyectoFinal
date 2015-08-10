@@ -1,10 +1,10 @@
-var MiFuncion || MiFuncion {
+
 	function validateUser() {
 		var username = document.getElementById('user').value;
 		var password = document.getElementById('password').value;
 		var errorElement = document.getElementById('error_msg');
 		if (username == '12' && password == '12') {		
-			console.log('dash.html');
+			window.location.href="dash.html";
 		} else {
 			alert("error");
 		}	
@@ -63,36 +63,6 @@ var MiFuncion || MiFuncion {
 		}
 	};
 
-	function cargarTablaCh() {
-	    var listaC = JSON.parse(localStorage['LChambas']);
-	    var cont = listaC.length;
-	    if (cont > 0)
-	    {
-	      var render =  "<table class='tbdatos' Id ='tbl2'> 
-	      					<thead><tr>
-	      						<th>cliente</th>
-	      						<th>description</th>
-	      						<th>date</th>
-	      						<th>note</th>
-	      						<th>actions</th>
-	      					</tr></thead>";
-	        render+="<tbody>";
-
-	        for (i = 0; i < cont; i++) {
-	            var obj =  listaC[i];
-	                  render += "<tr>";
-	                  render += "<td>" + obj.cliente + "</td>";
-	                  render+= "<td>" + obj.descripcion + " </td>";
-	                  render += "<td>" + obj.date+ "</td>";
-	                  render += "<td>" + obj.note+ "</td>";
-	                  render += "</tr>";
-	        }
-	          render+="</tbody";
-	        render+="</table>";
-	        dvcontainer.innerHTML = render;
-	    }
-	};
-
 	var LClientes = new Array();
 	var objUser = {
 		Id: 0,
@@ -104,10 +74,15 @@ var MiFuncion || MiFuncion {
 		var nombre = document.getElementById('nombre').value;
 		var id = document.getElementById('id').value;
 		var tel = document.getElementById('tel').value;
-		if (nombre == '' || id == '' || tel =='') {
-			alert("Ingresar datos");
-		}
-		else if ((localStorage.getItem('LClientes') == null)) {
+		if (nombre != '' && id != '' && tel !='') {
+			
+			if ((localStorage.getItem('LClientes') == null)) {
+				objUser = {
+					Id: 0,
+					Nombre: "",
+					Tel: ""
+				};
+				LClientes = new Array();
 				objUser.Id=id;
 				objUser.Nombre=nombre;
 				objUser.Tel=tel;
@@ -115,7 +90,7 @@ var MiFuncion || MiFuncion {
 				localStorage['LClientes']=JSON.stringify(LClientes);
 				console.log(LClientes);
 			}
-		else {
+			else{
 				var LClientes=JSON.parse(localStorage['LClientes']);
 				objUser.Id=id;
 				objUser.Nombre=nombre;
@@ -123,6 +98,11 @@ var MiFuncion || MiFuncion {
 				LClientes.push(objUser);
 				localStorage['LClientes']=JSON.stringify(LClientes);
 				console.log(LClientes);
+		}
+
+		}
+		else {
+				alert("Ingresar datos");
 		}
 	};
 
@@ -147,7 +127,7 @@ var MiFuncion || MiFuncion {
 	        dvcontainer.innerHTML = render;
 	    }
 	};
-}
+
 
 /*	var list = function(){
 		if (!window.localStorage) {

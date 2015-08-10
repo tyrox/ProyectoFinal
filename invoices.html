@@ -2,73 +2,102 @@
 <html>
   <head>
     <meta content="text/html; charset=utf-8" http-equiv="content-type">
-    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/materialize.css">
     <title> Chamberos.net </title>
   </head>
-  <body>
-    <div class="backgroundgris">
-        <h1 class="centrado">Chamberos.net - Invoices Administration </h1>
+  <body class="card-panel ">
+    <div>
+        <h2 class="center-align">Chamberos.net - Invoices Administration </h2>
     </div>
-    <div class="dash-menu">
-      <br> 
-      <ol class="sinborde">
-        <li class="dash-menu-borde-blaco"><a class="blanco" href="user.html">CLIENTES</a></li>
-        <li class="dash-menu-borde-blaco"><a class="blanco" href="chambas.html">CHAMBAS</a></li>
-        <li class="borde-naranja"><a class="fondoblanco" >INVOICES</a></li>
-        <a href="dash.html"><h3>HI</h3></a>
-        <img src="IMG/user.png"> </img>
+    <!-- DASH -->
+    <div>
+      <nav>
+      <a href="dash.html" class="brand-logo center">DASH</a>
+      <ul class="left hide-on-med-and-down">
+        <li><a href="user.html" >CLIENTES</a></li>
+        <li><a href="chambas.html">CHAMBAS</a></li>
+        <li><a class="teal lighten-2">INVOICES</a></li>
       </ul>
-      <br>
-    </div>
-    <div class="div-centrado">
+      <ul id="slide-out" class="side-nav">
+        <li><a href="user.html">CLIENTES</a></li>
+        <li><a href="chambas.html">CHAMBAS</a></li>
+        <li><a class="teal lighten-4">INVOICES</a></li>
+      </ul>
+      <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+    </nav>
+  </div>
+    <!-- IMAGEN INVOICES--> 
+    <div>
       <ul>
-        <li class="sinpunto">
+        <li>
           <img class="float-izq" src="IMG/invoices.png"></img>
-          <br> <br>
-          <h1 class="naranja-grueso"> INVOICES</h1>
-          <a href="newInvoice.html"><input class=" boton-amarillo" type="button" value="New invoice"></input></a>
+          <br>
         </li>
       </ul>
     </div>
     </br>
-    </br>
-    </br>
-    </br>
-    <div>
-      <center>
-      <table class="tabla">
-        <thead>
-        <tr class="back-th">
-            <th>Client</th>
-            <th>Description</th>
-            <th>Date</th>
-            <th>Amount</th>
-            <th class="">Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr class="tr">
-            <td>Bladimir Arroyo</td>
-            <td>Tapar huecos</td>
-            <td>09/05/2015</td>
-            <td>$140</td>
-            <td>
-              <a href="invoices_edit.html"><img class="" src="IMG/pencil.png"></img></a>
-              <a href="invoices_delete.html"><img class="" src="IMG/trash.png"></img></a>
-            </td>
-        </tr>
-        <tr class="tr">
-            <td>Yamma Luna</td>
-            <td>Pintar paredes</td>
-            <td>15/06/2014</td>
-            <td>$60</td>
-            <td>
-              <a href="invoices_edit.html"><img class="" src="IMG/pencil.png"></img></a>
-              <a href="invoices_delete.html"><img class="" src="IMG/trash.png"></img></a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <!-- INPUTS--> 
+    <div >
+      <form class="col s12" action="dash.html">
+              <div class="row">
+                <div class="input-field col s4">
+                    <input id="id" type="text" class="validate" required>
+                    <label for="id">Client</label>
+                </div>
+                
+                <div class="input-field col s4">
+                    <input id="date" type="date" class="datepicker" required>
+                    <label for="date">Date</label>
+                </div>
+                <div class="input-field col s4">
+                    <input id="amount" type="text" onKeypress="return solonumeros(event);" class="validate" required>
+                    <label for="amounts">Amount</label>
+                </div>
+                <div class="input-field col s4">
+                    <textarea id="descrip" class="materialize-textarea" required></textarea>
+                    <label for="descrip">Description</label>
+                </div>
+              </div>
+          </form>
     </div>
-  </body>
+    
+    <!-- La tabla --> 
+    <div  class="card-panel teal lighten-4" id="dvcontainer">
+      
+    </div>
+    <!-- BOTONES --> 
+    <div >
+      <a onclick="guardarC();" class="waves-effect waves-light btn">NEW</a>
+      <a class="waves-effect waves-light btn" onclick="Materialize.toast('<span>Item modificado</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;#!&quot;>Deshacer<a>', 5000)">EDIT</a>
+      <a onclick="cargarTablaC();" class="waves-effect waves-light btn modal-trigger" href="#modal1">DELETE</a>
+  </div>
+  <!-- Modal Structure -->  
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>DELETE</h4>
+      <p>Está seguro que quiere borrar el cliente?</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">No</a>
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Si</a>
+    </div>
+  </div>
+</br>
+    <!-- SCRIPTS --> 
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="JS/javascrip.js"></script>
+    <script type="text/javascript" src="JS/js.js"></script>
+    <script>
+        $(document).ready(function(){
+          // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+          $('.modal-trigger').leanModal();
+          $('.button-collapse').sideNav();
+          $('.datepicker').pickadate({
+          selectMonths: true, // Creates a dropdown to control month
+          selectYears: 15 // Creates a dropdown of 15 years to control year
+        }); 
+       });   
+    </script>
+</body>
 </html>

@@ -7,7 +7,7 @@
   </head>
   <body class="card-panel ">
     <div >
-      <h2>Chamberos.net - Chambas Administration</h2>
+      <h2 class="center-align">Chamberos.net - Chambas Administration</h2>
     </div>
     <div>
       <nav>
@@ -18,8 +18,8 @@
         <li><a href="invoices.html">INVOICES</a></li>
       </ul>
       <ul id="slide-out" class="side-nav">
-        <li><a class="teal lighten-4">CLIENTES</a></li>
-        <li><a href="chambas.html">CHAMBAS</a></li>
+        <li><a href="user.html">CLIENTES</a></li>
+        <li><a class="teal lighten-4">CHAMBAS</a></li>
         <li><a href="invoices.html">INVOICES</a></li>
       </ul>
       <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
@@ -37,20 +37,24 @@
     </br>
     </br>
     <!-- INPUTS--> 
-    <div>
+    <div >
       <form class="col s12" action="dash.html">
               <div class="row">
                 <div class="input-field col s4">
                     <input id="id" type="text" class="validate" required>
-                    <label for="user">ID</label>
+                    <label for="id">Client</label>
                 </div>
                 <div class="input-field col s4">
-                    <input id="nombre" type="text" class="validate" required>
-                    <label for="password">Name</label>
+                    <input id="work" type="text" class="datepicker" required>
+                    <label for="work">Date</label>
                 </div>
                 <div class="input-field col s4">
-                    <input id="tel" type="text" class="validate" required>
-                    <label for="tel">Phone</label>
+                    <input id="note" type="text" class="validate" required>
+                    <label for="note">Note</label>
+                </div>
+                <div class="input-field col s4">
+                    <textarea id="descrip" class="materialize-textarea" required></textarea>
+                    <label for="descrip">Description</label>
                 </div>
               </div>
           </form>
@@ -62,9 +66,11 @@
     </div>
 
     <!-- BOTONES --> 
-    <a onclick="guardarC();" class="waves-effect waves-light btn">NEW</a>
-    <a class="waves-effect waves-light btn" onclick="Materialize.toast('<span>Item modificado</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;#!&quot;>Deshacer<a>', 5000)">EDIT</a>
-    <a onclick="cargarTablaC();" class="waves-effect waves-light btn modal-trigger" href="#modal1">DELETE</a>
+    <div >
+      <a onclick="guardarC();" class="waves-effect waves-light btn">NEW</a>
+      <a class="waves-effect waves-light btn" onclick="Materialize.toast('<span>Item modificado</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;#!&quot;>Deshacer<a>', 5000)">EDIT</a>
+      <a onclick="cargarTablaC();" class="waves-effect waves-light btn modal-trigger" href="#modal1">DELETE</a>
+  </div>
   <!-- Modal Structure -->  
   <div id="modal1" class="modal">
     <div class="modal-content">
@@ -86,6 +92,10 @@
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal-trigger').leanModal();
     $('.button-collapse').sideNav();
+    $('.datepicker').pickadate({
+          selectMonths: true, // Creates a dropdown to control month
+          selectYears: 15 // Creates a dropdown of 15 years to control year
+        }); 
   });
   </script>
   </body>

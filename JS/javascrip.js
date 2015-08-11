@@ -89,6 +89,7 @@
 				LClientes.push(objUser);
 				localStorage['LClientes']=JSON.stringify(LClientes);
 				console.log(LClientes);
+				cargarTablaC();
 			}
 			else{
 				var LClientes=JSON.parse(localStorage['LClientes']);
@@ -98,6 +99,7 @@
 				LClientes.push(objUser);
 				localStorage['LClientes']=JSON.stringify(LClientes);
 				console.log(LClientes);
+				cargarTablaC();
 		}
 
 		}
@@ -107,13 +109,13 @@
 	};
 
 	function cargarTablaC() {
-	    var listaC = JSON.parse(localStorage['LClientes']);
-	    var cont = listaC.length;
+	    
+	    var cont = tamannoC();
 	    if (cont > 0)
 	    {
 	      var render =  "<table class='tbdatos' Id ='tbl1'> <thead><tr><th>Id</th><th>Name</th><th>Phone</th></tr> </thead>";
 	        render+="<tbody>";
-
+	      var listaC = JSON.parse(localStorage['LClientes']);
 	        for (i = 0; i < cont; i++) {
 	            var obj =  listaC[i];
 	                  render += "<tr>";
@@ -126,6 +128,16 @@
 	        render+="</table>";
 	        dvcontainer.innerHTML = render;
 	    }
+	};
+	function tamannoC () {
+		if (localStorage.getItem('LClientes') == null) {
+			return 0;
+		}
+		else{
+			var listaC = JSON.parse(localStorage['LClientes']);
+	    	var cont = listaC.length;
+			return cont;
+		}
 	};
 
 

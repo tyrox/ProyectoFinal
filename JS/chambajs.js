@@ -70,7 +70,7 @@
 	    var cont = tamannoC();
 	    if (cont > 0)
 	    {
-	      var render =  "<table class='tbdatos' Id ='tbl1'><thead><tr><th>Id Client</th><th>Work Description</th><th>Date</th><th>Note</th></tr> </thead>";
+	      var render =  "<table class='responsive-table' Id ='tbl1'><thead><tr><th>Id Client</th><th>Work Description</th><th>Date</th><th>Note</th></tr> </thead>";
 	        render+="<tbody>";
 	      var listaC = JSON.parse(localStorage['LChambas']);
 	        for (i = 0; i < cont; i++) {

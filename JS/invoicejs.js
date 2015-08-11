@@ -70,7 +70,7 @@
 	    var cont = tamannoC();
 	    if (cont > 0)
 	    {
-	      var render =  "<table class='tbdatos' Id ='tbl1'><thead><tr><th>Id Client</th><th>Description</th><th>Date</th><th>Amount $</th></tr> </thead>";
+	      var render =  "<table class='responsive-table' Id ='tbl1'><thead><tr><th>Id Client</th><th>Description</th><th>Date</th><th>Amount $</th></tr> </thead>";
 	        render+="<tbody>";
 	      var listaC = JSON.parse(localStorage['LInvoice']);
 	        for (i = 0; i < cont; i++) {

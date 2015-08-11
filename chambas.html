@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="CSS/materialize.css">
     <title> Chamberos.net </title>
   </head>
-  <body class="card-panel ">
+  <body class="card-panel " onload="cargarTablaC();">
     <div >
       <h2 class="center-align">Chamberos.net - Chambas Administration</h2>
     </div>
@@ -45,8 +45,8 @@
                     <label for="id">Client</label>
                 </div>
                 <div class="input-field col s4">
-                    <input id="work" type="text" class="datepicker" required>
-                    <label for="work">Date</label>
+                    <input id="date" type="text" class="datepicker" required>
+                    <label for="date">Date</label>
                 </div>
                 <div class="input-field col s4">
                     <input id="note" type="text" class="validate" required>
@@ -54,7 +54,7 @@
                 </div>
                 <div class="input-field col s4">
                     <textarea id="descrip" class="materialize-textarea" required></textarea>
-                    <label for="descrip">Description</label>
+                    <label for="descrip">Work Description</label>
                 </div>
               </div>
           </form>
@@ -86,7 +86,7 @@
    
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
-<script type="text/javascript" src="JS/javascrip.js"></script>
+<script type="text/javascript" src="JS/chambajs.js"></script>
 <script>
    $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered

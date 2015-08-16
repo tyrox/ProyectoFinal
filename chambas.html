@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="CSS/materialize.css">
     <title> Chamberos.net </title>
   </head>
-  <body class="card-panel " onload="cargarTablaC();">
+  <body class="card-panel " onload="miChamb.funciones.cargarTablaC();">
     <div >
       <h2 class="center-align">Chamberos.net - Chambas Administration</h2>
     </div>
@@ -56,8 +56,14 @@
                 <div class="input-field col s4">
                     <textarea id="descrip" class="materialize-textarea" required></textarea>
                     <label for="descrip">Work Description</label>
-                </div>
+                </div>                 
               </div>
+              <!-- BOTONES --> 
+                <div >
+                  <a onclick="miChamb.funciones.guardarC();" class="waves-effect waves-light btn">NEW</a>
+                  <a class="waves-effect waves-light btn" onclick="Materialize.toast('<span>Item modificado</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;#!&quot;><a>', 5000)">EDIT</a>
+                  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">DELETE</a>
+                </div>
           </form>
     </div>
     
@@ -66,12 +72,7 @@
       
     </div>
 
-    <!-- BOTONES --> 
-    <div >
-      <a onclick="guardarC();" class="waves-effect waves-light btn">NEW</a>
-      <a class="waves-effect waves-light btn" onclick="Materialize.toast('<span>Item modificado</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;#!&quot;>Deshacer<a>', 5000)">EDIT</a>
-      <a onclick="cargarTablaC();" class="waves-effect waves-light btn modal-trigger" href="#modal1">DELETE</a>
-  </div>
+    
   <!-- Modal Structure -->  
   <div id="modal1" class="modal">
     <div class="modal-content">
@@ -80,7 +81,7 @@
     </div>
     <div class="modal-footer">
       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">No</a>
-      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Si</a>
+      <a onclick="miChamb.funciones.eliminar(0);" href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Si</a>
     </div>
   </div>
 </br>

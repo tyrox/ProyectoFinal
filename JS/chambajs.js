@@ -140,29 +140,15 @@ miChamb.funciones = miChamb.funciones || {};
 	    		}
 	    		Materialize.toast('<span>Item modificado</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;#!&quot;><a>', 5000);
 	    	}
-	    	else{	    	/*
-	    	objCham.Id=id;
-				objCham.Work=trabajo;
-				objCham.Note=notes;
-				objCham.Date=fecha;
-				*/
-	    	var lista = JSON.parse(localStorage['LChambas']);
-	    	/*
-	    	console.log(lista);
-	    	lista.splice(posicion, posicion+1, objCham);
-	    	console.log(lista);
-	    	localStorage['LChambas']=JSON.stringify(lista);	    	
-	    	*/
-	    	
-	    	//console.log(fila);
-
+	    	else{
 	    	miChamb.funciones.cargarTablaC();
 	   	 }
 	    }
 	    else {
 	    	miChamb.funciones.cargarTablaC();
 	    }
-	    miChamb.funciones.cargarTablaC();
+	    posicionAct=-1;
+	    miChamb.funciones.limpiar();
 	    miChamb.funciones.cargarTablaC();
 	};
 	miChamb.funciones.miVarlor = function  (pos) {

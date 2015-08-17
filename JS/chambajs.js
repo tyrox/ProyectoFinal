@@ -17,6 +17,7 @@ miChamb.funciones = miChamb.funciones || {};
 			return false;
 		}
 	};
+	//variables globales
 	var contador = 0;
 	var LChambas = new Array();
 	var objCham = {
@@ -26,6 +27,8 @@ miChamb.funciones = miChamb.funciones || {};
 		Date: "",
 		Note:""
 	};
+	var temporal;
+	var posicionAct = -1;
 
 	miChamb.funciones.guardarC = function (){		
 		var id = document.getElementById('id').value;
@@ -99,8 +102,7 @@ miChamb.funciones = miChamb.funciones || {};
 	    window.location.href="chambas.html";
 	    
 	};
-	var temporal;
-	var posicionAct;
+	
 	miChamb.funciones.cargar = function (pos){
 		if (temporal!=null) {
 			temporal.style.backgroundColor="#b2dfdb"; 	
@@ -121,7 +123,7 @@ miChamb.funciones = miChamb.funciones || {};
 		objCham.Date =document.getElementById('date').value;
 		var posicion = posicionAct;
 		//fila.parentNode.removeChild(fila);
-	    if (cont > 0)
+	    if (cont > 0 && posicion >=0)
 	    {
 	    	if (objCham.Id !="" && objCham.Note !="" && objCham.Work !="" && objCham.Date !="") {
 	    		console.log(objCham);
@@ -133,7 +135,8 @@ miChamb.funciones = miChamb.funciones || {};
 	    			localStorage['LChambas']=JSON.stringify(lista);
 	    		}
 	    		else {	    	
-	    			lista.splice(posicion, posicion, objCham);
+	    			var tempo = lista.splice(posicion, posicion, objCham);
+	    			console.log(tempo, posicion);
 	    			console.log(lista);
 	    			localStorage['LChambas']=JSON.stringify(lista);	    	
 	    			miChamb.funciones.cargarTablaC();	    	

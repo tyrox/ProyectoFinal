@@ -1,13 +1,13 @@
 var miInvo = miInvo || {}
-	miInvo.funciones = miInvo.funciones || {};
-		var solonumeros = function (e){
-			key=e.keycode || e.which;
-			teclado=String.fromCharCode(key);
-			numeros="0123456789";
-			especiales="8-37-38-46";//en esta parte pusiste espeeciales, osea lo pusiste con doble e y más abajo utilizas solo con una e.
-			teclado_especial=false;
-			for(var i in especiales){
-				if(key==especiales[i]){
+miInvo.funciones = miInvo.funciones || {};
+	var solonumeros = function (e){
+		key=e.keycode || e.which;
+		teclado=String.fromCharCode(key);
+		numeros="0123456789";
+		especiales="8-37-38-46";//en esta parte pusiste espeeciales, osea lo pusiste con doble e y más abajo utilizas solo con una e.
+		teclado_especial=false;
+		for(var i in especiales){
+			if(key==especiales[i]){
 				teclado_especial=true;
 			}
 		}
@@ -15,15 +15,17 @@ var miInvo = miInvo || {}
 		if(numeros.indexOf(teclado)==-1 && !teclado_especial){// en esta parte pusiste indexof todo con minusculas y debe ser el Of con mayuscula
 			return false;
 		}
-	}
-
+	};
+	//variables globales
 	var LInvoice = new Array();
 	var objInv = {
 		Id: 0,
 		Work: "",
 		Date: "",
 		Amount:0
-	};
+	};	
+	var temporal;
+	var posicionAct= -1;
 
 	function guardarC(){		
 		var id = document.getElementById('id').value;
@@ -46,8 +48,7 @@ var miInvo = miInvo || {}
 				objInv.Date=fecha;
 				LInvoice.push(objInv);
 				localStorage['LInvoice']=JSON.stringify(LInvoice);
-				console.log(LInvoice);
-				cargarTablaC();
+				miInvo.funciones.cargarTablaC();
 			}
 			else{
 				var LInvoice=JSON.parse(localStorage['LInvoice']);
@@ -56,20 +57,117 @@ var miInvo = miInvo || {}
 				objInv.Amount=monto;
 				objInv.Date=fecha;
 				LInvoice.push(objInv);
-				localStorage['LInvoice']=JSON.stringify(LInvoice);
-				console.log(LInvoice);
-				cargarTablaC();
+				localStorage['LInvoice']=JSON.stringify(LInvoice);				
+				miInvo.funciones.cargarTablaC();
 		}
 
 		}
 		else {
-				alert("Ingresar datos");
+				alert("Faltan datos!");
 		}
+		console.log(LInvoice);
 	};
-
-	function cargarTablaC() {
+	miInvo.funciones.cargar = function (pos){
+		if (temporal!=null) {
+			temporal.style.backgroundColor="#b2dfdb"; 	
+		}		
+		temporal = pos;
+		posicionAct= $(pos).closest("tr").index();		
+		console.log(posicionAct);
+		pos.style.backgroundColor="#4db6ac"; 
+		miInvo.funciones.miVarlor(temporal);
+	};
+	miInvo.funciones.modificar = function (pos){
+		
+		var cont = miInvo.funciones.tamannoC();
+		var nuevo = new Array();
+		objInv.Id =document.getElementById('id').value;
+		objInv.Amount =document.getElementById('amount').value;
+		objInv.Work =document.getElementById('descrip').value;
+		objInv.Date =document.getElementById('date').value;
+		var posicion = posicionAct;
+		//fila.parentNode.removeChild(fila);
+	    if (cont > 0)
+	    {
+	    	if (objInv.Id !="" && objInv.Amount !="" && objInv.Work !="" && objInv.Date !="") {
+	    		console.log(objInv);
+	    		var lista = new Array();
+	    		var lista = JSON.parse(localStorage['LInvoice']);	    	
+	    		if (posicion == 0) {
+	    			lista.shift();
+	    			lista.splice(posicion, posicion, objInv);
+	    			localStorage['LInvoice']=JSON.stringify(lista);
+	    		}
+	    		else {	    	
+	    			lista.splice(posicion, posicion, objInv);
+	    			console.log(lista);
+	    			localStorage['LInvoice']=JSON.stringify(lista);	    	
+	    			miInvo.funciones.cargarTablaC();	    	
+	    		}
+	    		Materialize.toast('<span>Item modificado</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;#!&quot;><a>', 5000);
+	    	}
+	    	else{
+	    	miInvo.funciones.cargarTablaC();
+	   	 }
+	    }
+	    else {
+	    	miInvo.funciones.cargarTablaC();
+	    }
+	    posicionAct=-1;
+	    miInvo.funciones.limpiar();
+	    miInvo.funciones.cargarTablaC();
+	};
+	miInvo.funciones.eliminar = function (pos){
+		var posicion = posicionAct;
+		console.log(posicion);
+		var cont = miInvo.funciones.tamannoC();
+	    if (posicion >= 0 && cont>0)
+	    {
+	    	var lista = new Array();
+	    	var lista = JSON.parse(localStorage['LInvoice']);	    	
+	    	if (posicion == 0) {
+	    		lista.shift();
+	    		localStorage['LInvoice']=JSON.stringify(lista);
+	    	}
+	    	else {	    	
+	    		lista.splice(posicion, posicion);
+	    		console.log(lista);
+	    		localStorage['LInvoice']=JSON.stringify(lista);	    	
+	    		miInvo.funciones.cargarTablaC();	    	
+	    	}
+	    }
+	    else {	    	
+	    	
+	    }
+	    window.location.href="invoices.html";
 	    
-	    var cont = tamannoC();
+	};
+	miInvo.funciones.miVarlor = function  (pos) {
+		//busca el valor de la segunda columna (id)
+ 		$(pos).find('td:eq(0)').each(function (){
+ 			fila = $(this).html();
+ 			document.getElementById('id').value=fila;
+ 			return fila;
+ 		})
+ 		$(pos).find('td:eq(1)').each(function (){
+ 			fila = $(this).html();
+ 			document.getElementById('descrip').value=fila;
+ 			return fila;
+ 		})
+ 		$(pos).find('td:eq(2)').each(function (){
+ 			fila = $(this).html();
+ 			document.getElementById('date').value=fila;
+ 			return fila;
+ 		})
+ 		$(pos).find('td:eq(3)').each(function (){
+ 			fila = $(this).html();
+ 			document.getElementById('amount').value=fila;
+ 			return fila;
+ 		})
+	};
+	miInvo.funciones.cargarTablaC = function() {
+	    
+	    var cont = miInvo.funciones.tamannoC();
 	    if (cont > 0)
 	    {
 	      var render =  "<table class='responsive-table' Id ='tbl1'><thead><tr><th>Id Client</th><th>Description</th><th>Date</th><th>Amount $</th></tr> </thead>";
@@ -77,7 +175,7 @@ var miInvo = miInvo || {}
 	      var listaC = JSON.parse(localStorage['LInvoice']);
 	        for (i = 0; i < cont; i++) {
 	            var obj =  listaC[i];
-	                  render += "<tr>";
+	                  render += "<tr onclick=miInvo.funciones.cargar(this);>";
 	                  render += "<td>" + obj.Id + "</td>";
 	                  render+= "<td>" + obj.Work + " </td>";
 	                  render+= "<td>" + obj.Date + " </td>";
@@ -89,7 +187,7 @@ var miInvo = miInvo || {}
 	        dvcontainer.innerHTML = render;
 	    }
 	};
-	function tamannoC () {
+	miInvo.funciones.tamannoC = function () {
 		if (localStorage.getItem('LInvoice') == null) {
 			return 0;
 		}
@@ -99,3 +197,10 @@ var miInvo = miInvo || {}
 			return cont;
 		}
 	};
+	miInvo.funciones.limpiar = function  () {
+		// limpia campos
+		document.getElementById('id').value="";
+		document.getElementById('date').value="";
+		document.getElementById('amount').value="";
+		document.getElementById('descrip').value="";
+	}

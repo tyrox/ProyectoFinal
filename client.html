@@ -8,7 +8,7 @@
     
     <title> Chamberos.net </title>
 </head>
-<body  class="card-panel " onload="cargarTablaC();">
+<body  class="card-panel " onload="miClient.funciones.cargarTablaC();">
 
   <h2 class="center-align">Chamberos.net - Clients Administration</h2>
   <!-- MENU --> 
@@ -16,12 +16,14 @@
   <nav>
     <a href="dash.html" class="brand-logo center"><i class="medium material-icons">dashboard</i></a>
     <ul class="left hide-on-med-and-down">
+      <li><a href="user.html">USERS</a></li>
       <li><a class="teal lighten-2">CLIENTES</a></li>
       <li><a href="chambas.html">CHAMBAS</a></li>
-      <li><a href="invoices.html">INVOICES</a></li>
+      <li><a href="invoices.html">INVOICES</a></li>      
     </ul>
     <ul id="slide-out" class="side-nav">
-      <li><a class="teal lighten-4">CLIENTES</a></li>
+      <li><a href="user.html">USERS</a></li>
+      <li><a class="teal lighten-2">CLIENTES</a></li>
       <li><a href="chambas.html">CHAMBAS</a></li>
       <li><a href="invoices.html">INVOICES</a></li>
     </ul>
@@ -43,15 +45,15 @@
       <form class="col s12" >
               <div class="row">
                 <div class="input-field col s4">
-                    <input id="id" type="text" class="validate" required>
+                    <input placeholder="" id="id" type="text" class="validate" required>
                     <label for="id">ID</label>
                 </div>
                 <div class="input-field col s4">
-                    <input id="nombre" type="text" class="validate" required>
+                    <input placeholder="" id="nombre" type="text" class="validate" required>
                     <label for="nombre">Name</label>
                 </div>
                 <div class="input-field col s4">
-                    <input id="tel" type="text" class="validate" required>
+                    <input placeholder="" id="tel" type="tel" class="validate" required>
                     <label for="tel">Phone</label>
                 </div>
               </div>
@@ -64,9 +66,9 @@
     </div>
 
     <!-- BOTONES --> 
-    <a onclick="guardarC();" class="waves-effect waves-light btn">NEW</a>
-    <a class="waves-effect waves-light btn" onclick="Materialize.toast('<span>Item modificado</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;#!&quot;>Deshacer<a>', 5000)">EDIT</a>
-    <a onclick="cargarTablaC();" class="waves-effect waves-light btn modal-trigger" href="#modal1">DELETE</a>
+    <a onclick="miClient.funciones.guardarC();" class="waves-effect waves-light btn">NEW</a>
+    <a onclick="miClient.funciones.modificar(this);"class="waves-effect waves-light btn">EDIT</a>
+    <a class="waves-effect waves-light btn modal-trigger" href="#modal1">DELETE</a>
   <!-- Modal Structure -->  
   <div id="modal1" class="modal">
     <div class="modal-content">
@@ -75,13 +77,13 @@
     </div>
     <div class="modal-footer">
       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">No</a>
-      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Si</a>
+      <a onclick="miClient.funciones.eliminar();" class=" modal-action modal-close waves-effect waves-green btn-flat">Si</a>
     </div>
   </div>
 </br>
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
-<script type="text/javascript" src="JS/javascrip.js"></script>
+<script type="text/javascript" src="JS/clientjs.js"></script>
 <script>
    $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered

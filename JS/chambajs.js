@@ -70,23 +70,30 @@ miChamb.funciones = miChamb.funciones || {};
 
 		}
 		else {
-				alert("Ingresar datos");
+				alert("Faltan datos!");
 		}
+		miChamb.funciones.limpiar();
 	};
 	miChamb.funciones.eliminar = function (pos){
 		var posicion = posicionAct;
 		console.log(posicion);
 		var cont = miChamb.funciones.tamannoC();
-	    if (cont > 0)
+	    if (posicion >= 0 && cont>0)
 	    {
 	    	var lista = new Array();
 	    	var lista = JSON.parse(localStorage['LChambas']);	    	
-	    	lista.splice(posicion, posicion+1);
-	    	console.log(lista);
-	    	localStorage['LChambas']=JSON.stringify(lista);	    	
-	    	miChamb.funciones.cargarTablaC();	    	
+	    	if (posicion == 0) {
+	    		lista.shift();
+	    		localStorage['LChambas']=JSON.stringify(lista);
+	    	}
+	    	else {	    	
+	    		lista.splice(posicion, posicion);
+	    		console.log(lista);
+	    		localStorage['LChambas']=JSON.stringify(lista);	    	
+	    		miChamb.funciones.cargarTablaC();	    	
+	    	}
 	    }
-	    else {
+	    else {	    	
 	    	
 	    }
 	    window.location.href="chambas.html";
@@ -108,12 +115,32 @@ miChamb.funciones = miChamb.funciones || {};
 		
 		var cont = miChamb.funciones.tamannoC();
 		var nuevo = new Array();
-		var total=0;
-		
+		objCham.Id =document.getElementById('id').value;
+		objCham.Note =document.getElementById('note').value;
+		objCham.Work =document.getElementById('descrip').value;
+		objCham.Date =document.getElementById('date').value;
+		var posicion = posicionAct;
 		//fila.parentNode.removeChild(fila);
 	    if (cont > 0)
 	    {
-	    	/*
+	    	if (objCham.Id !="" && objCham.Note !="" && objCham.Work !="" && objCham.Date !="") {
+	    		console.log(objCham);
+	    		var lista = new Array();
+	    		var lista = JSON.parse(localStorage['LChambas']);	    	
+	    		if (posicion == 0) {
+	    			lista.shift();
+	    			lista.splice(posicion, posicion, objCham);
+	    			localStorage['LChambas']=JSON.stringify(lista);
+	    		}
+	    		else {	    	
+	    			lista.splice(posicion, posicion, objCham);
+	    			console.log(lista);
+	    			localStorage['LChambas']=JSON.stringify(lista);	    	
+	    			miChamb.funciones.cargarTablaC();	    	
+	    		}
+	    		Materialize.toast('<span>Item modificado</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;#!&quot;><a>', 5000);
+	    	}
+	    	else{	    	/*
 	    	objCham.Id=id;
 				objCham.Work=trabajo;
 				objCham.Note=notes;
@@ -130,11 +157,13 @@ miChamb.funciones = miChamb.funciones || {};
 	    	//console.log(fila);
 
 	    	miChamb.funciones.cargarTablaC();
+	   	 }
 	    }
 	    else {
 	    	miChamb.funciones.cargarTablaC();
 	    }
-	    
+	    miChamb.funciones.cargarTablaC();
+	    miChamb.funciones.cargarTablaC();
 	};
 	miChamb.funciones.miVarlor = function  (pos) {
 		//busca el valor de la segunda columna (id)
@@ -143,7 +172,7 @@ miChamb.funciones = miChamb.funciones || {};
  			document.getElementById('id').value=fila;
  			return fila;
  		})
- 		$(pos).find('td:eq(1)').each(function (){
+ 		$(pos).find('td:eq(3)').each(function (){
  			fila = $(this).html();
  			document.getElementById('note').value=fila;
  			return fila;
@@ -153,7 +182,7 @@ miChamb.funciones = miChamb.funciones || {};
  			document.getElementById('date').value=fila;
  			return fila;
  		})
- 		$(pos).find('td:eq(3)').each(function (){
+ 		$(pos).find('td:eq(1)').each(function (){
  			fila = $(this).html();
  			document.getElementById('descrip').value=fila;
  			return fila;
@@ -202,3 +231,10 @@ miChamb.funciones = miChamb.funciones || {};
 			return cont;
 		}
 	};
+	miChamb.funciones.limpiar = function  () {
+		// limpia campos
+		document.getElementById('id').value="";
+		document.getElementById('date').value="";
+		document.getElementById('note').value="";
+		document.getElementById('descrip').value="";
+	}

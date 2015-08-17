@@ -1,3 +1,5 @@
+var miInvo = miInvo || {}
+	miInvo.funciones = miInvo.funciones || {};
 		var solonumeros = function (e){
 			key=e.keycode || e.which;
 			teclado=String.fromCharCode(key);

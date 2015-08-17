@@ -74,30 +74,42 @@ miChamb.funciones = miChamb.funciones || {};
 		}
 	};
 	miChamb.funciones.eliminar = function (pos){
-		var posicion = pos;
+		var posicion = posicionAct;
+		console.log(posicion);
 		var cont = miChamb.funciones.tamannoC();
 	    if (cont > 0)
 	    {
 	    	var lista = new Array();
-	    	var lista = JSON.parse(localStorage['LChambas']);
-	    	console.log(lista);
+	    	var lista = JSON.parse(localStorage['LChambas']);	    	
 	    	lista.splice(posicion, posicion+1);
 	    	console.log(lista);
 	    	localStorage['LChambas']=JSON.stringify(lista);	    	
-	    	console.log(lista);
-	    	miChamb.funciones.cargarTablaC();
+	    	miChamb.funciones.cargarTablaC();	    	
 	    }
 	    else {
-	    	miChamb.funciones.cargarTablaC();
+	    	
 	    }
+	    window.location.href="chambas.html";
 	    
 	};
+	var temporal;
+	var posicionAct;
+	miChamb.funciones.cargar = function (pos){
+		if (temporal!=null) {
+			temporal.style.backgroundColor="#b2dfdb"; 	
+		}		
+		temporal = pos;
+		posicionAct= $(pos).closest("tr").index();		
+		console.log(posicionAct);
+		pos.style.backgroundColor="#4db6ac"; 
+		miChamb.funciones.miVarlor(temporal);
+	};
 	miChamb.funciones.modificar = function (pos){
-		var posicion = pos;
+		
 		var cont = miChamb.funciones.tamannoC();
 		var nuevo = new Array();
-		//
-		fila = pos.parentNode;
+		var total=0;
+		
 		//fila.parentNode.removeChild(fila);
 	    if (cont > 0)
 	    {
@@ -115,7 +127,7 @@ miChamb.funciones = miChamb.funciones || {};
 	    	localStorage['LChambas']=JSON.stringify(lista);	    	
 	    	*/
 	    	
-	    	console.log(fila);
+	    	//console.log(fila);
 
 	    	miChamb.funciones.cargarTablaC();
 	    }
@@ -124,23 +136,47 @@ miChamb.funciones = miChamb.funciones || {};
 	    }
 	    
 	};
+	miChamb.funciones.miVarlor = function  (pos) {
+		//busca el valor de la segunda columna (id)
+ 		$(pos).find('td:eq(0)').each(function (){
+ 			fila = $(this).html();
+ 			document.getElementById('id').value=fila;
+ 			return fila;
+ 		})
+ 		$(pos).find('td:eq(1)').each(function (){
+ 			fila = $(this).html();
+ 			document.getElementById('note').value=fila;
+ 			return fila;
+ 		})
+ 		$(pos).find('td:eq(2)').each(function (){
+ 			fila = $(this).html();
+ 			document.getElementById('date').value=fila;
+ 			return fila;
+ 		})
+ 		$(pos).find('td:eq(3)').each(function (){
+ 			fila = $(this).html();
+ 			document.getElementById('descrip').value=fila;
+ 			return fila;
+ 		})
+	};
 
 	miChamb.funciones.cargarTablaC = function () {
 	    
 	    var cont = miChamb.funciones.tamannoC();
 	    if (cont > 0)
 	    {
-	      var render =  "<table class='responsive-table' Id ='tbl1'><thead><tr><th>Id Client</th><th>Id Chamba</th><th>Work Description</th><th>Date</th><th>Note</th></tr> </thead>";
+	      var render =  "<table class='responsive-table' Id ='tbl1'><thead><tr><th>Id Client</th><th>Work Description</th><th>Date</th><th>Note</th></tr> </thead>";
 	        render+="<tbody>";
 	      var listaC = JSON.parse(localStorage['LChambas']);
 	        for (i = 0; i < cont; i++) {
 	            var obj =  listaC[i];
-	                  render += "<tr onclick=miChamb.funciones.modificar(this);>";
-	                  render += "<td>" + obj.Id + "</td>";
-	                  render += "<td>" + obj.IdC + "</td>";
+	            //onmouseover="miChamb.funciones.cambiar_color_over(this);" onmouseout="miChamb.funciones.cambiar_color_out(this);"
+	                  render += '<tr onclick=miChamb.funciones.cargar(this);>'
+	                  render += '<td >' + obj.Id + "</td>";	              
 	                  render+= "<td>" + obj.Work + " </td>";
 	                  render+= "<td>" + obj.Date + " </td>";
 	                  render += "<td>" + obj.Note+ "</td>";
+	                  //render += "<td>" + '<button class="waves-effect waves-light btn modal-trigger" href="#modal1">x</button>' + "</td>";
 	                  render += "</tr>";
 	        }
 	          render+="</tbody";
@@ -148,6 +184,14 @@ miChamb.funciones = miChamb.funciones || {};
 	        dvcontainer.innerHTML = render;
 	    }
 	};
+	/* cambiar de color
+	miChamb.funciones.cambiar_color_over = function(celda){ 
+   		celda.style.backgroundColor="#4db6ac" 
+	}; 
+	miChamb.funciones.cambiar_color_out = function (celda){ 
+   		celda.style.backgroundColor="#b2dfdb" 
+	};
+	*/
 	miChamb.funciones.tamannoC = function () {
 		if (localStorage.getItem('LChambas') == null) {
 			return 0;

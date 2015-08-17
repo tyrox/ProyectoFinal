@@ -4,7 +4,7 @@
     <meta content="text/html; charset=utf-8" http-equiv="content-type">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="CSS/materialize.css">
-    <title> Chamberos.net </title>
+    <title> Chamberos.net </title>    
   </head>
   <body class="card-panel " onload="miChamb.funciones.cargarTablaC();">
     <div >
@@ -42,15 +42,15 @@
       <form class="col s12" action="dash.html">
               <div class="row">
                 <div class="input-field col s4">
-                    <input id="id" type="text" class="validate" required>
+                    <input placeholder="" id="id" type="text" class="validate" required>
                     <label for="id">Client</label>
                 </div>
                 <div class="input-field col s4">
-                    <input id="date" type="text" class="datepicker" required>
+                    <input placeholder="" id="date" type="text" class="datepicker" required>
                     <label for="date">Date</label>
                 </div>
                 <div class="input-field col s4">
-                    <input id="note" type="text" class="validate" required>
+                    <input placeholder="" id="note" type="text" class="validate" required>
                     <label for="note">Note</label>
                 </div>
                 <div class="input-field col s4">
@@ -81,7 +81,7 @@
     </div>
     <div class="modal-footer">
       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">No</a>
-      <a onclick="miChamb.funciones.eliminar(0);" href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Si</a>
+      <a onclick="miChamb.funciones.eliminar(this);" href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Si</a>
     </div>
   </div>
 </br>

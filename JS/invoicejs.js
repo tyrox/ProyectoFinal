@@ -65,7 +65,9 @@ miInvo.funciones = miInvo.funciones || {};
 		else {
 				alert("Faltan datos!");
 		}
-		console.log(LInvoice);
+		posicionAct=-1;
+	    miInvo.funciones.limpiar();
+	    
 	};
 	miInvo.funciones.cargar = function (pos){
 		if (temporal!=null) {
@@ -87,24 +89,15 @@ miInvo.funciones = miInvo.funciones || {};
 		objInv.Date =document.getElementById('date').value;
 		var posicion = posicionAct;
 		//fila.parentNode.removeChild(fila);
-	    if (cont > 0)
+	    if (cont > 0 && posicion >=0)
 	    {
 	    	if (objInv.Id !="" && objInv.Amount !="" && objInv.Work !="" && objInv.Date !="") {
-	    		console.log(objInv);
 	    		var lista = new Array();
-	    		var lista = JSON.parse(localStorage['LInvoice']);	    	
-	    		if (posicion == 0) {
-	    			lista.shift();
-	    			lista.splice(posicion, posicion, objInv);
-	    			localStorage['LInvoice']=JSON.stringify(lista);
-	    		}
-	    		else {	    	
-	    			lista.splice(posicion, posicion, objInv);
-	    			console.log(lista);
-	    			localStorage['LInvoice']=JSON.stringify(lista);	    	
-	    			miInvo.funciones.cargarTablaC();	    	
-	    		}
-	    		Materialize.toast('<span>Item modificado</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;#!&quot;><a>', 5000);
+	    		var lista = JSON.parse(localStorage['LInvoice']);    	
+	    		lista.splice(posicion, 1, objInv);
+	    		localStorage['LInvoice']=JSON.stringify(lista);	    	
+	    		miInvo.funciones.cargarTablaC();	    		    		
+	    		Materialize.toast('<span>Invoice modificado</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;#!&quot;><a>', 5000);
 	    	}
 	    	else{
 	    	miInvo.funciones.cargarTablaC();
@@ -119,7 +112,6 @@ miInvo.funciones = miInvo.funciones || {};
 	};
 	miInvo.funciones.eliminar = function (pos){
 		var posicion = posicionAct;
-		console.log(posicion);
 		var cont = miInvo.funciones.tamannoC();
 	    if (posicion >= 0 && cont>0)
 	    {
@@ -130,8 +122,7 @@ miInvo.funciones = miInvo.funciones || {};
 	    		localStorage['LInvoice']=JSON.stringify(lista);
 	    	}
 	    	else {	    	
-	    		lista.splice(posicion, posicion);
-	    		console.log(lista);
+	    		lista.splice(posicion, 1);
 	    		localStorage['LInvoice']=JSON.stringify(lista);	    	
 	    		miInvo.funciones.cargarTablaC();	    	
 	    	}

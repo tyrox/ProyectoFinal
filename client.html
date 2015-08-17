@@ -57,6 +57,12 @@
                     <label for="tel">Phone</label>
                 </div>
               </div>
+              <div>
+                <!-- BOTONES --> 
+                <a onclick="miClient.funciones.guardarC();" class="waves-effect waves-light btn">NEW</a>
+                <a onclick="miClient.funciones.modificar(this);"class="waves-effect waves-light btn">EDIT</a>
+                <a class="waves-effect waves-light btn modal-trigger" href="#modal1">DELETE</a>
+              </div>
           </form>
     </div>
     
@@ -64,11 +70,6 @@
     <div  class="card-panel teal lighten-4" id="dvcontainer">
       
     </div>
-
-    <!-- BOTONES --> 
-    <a onclick="miClient.funciones.guardarC();" class="waves-effect waves-light btn">NEW</a>
-    <a onclick="miClient.funciones.modificar(this);"class="waves-effect waves-light btn">EDIT</a>
-    <a class="waves-effect waves-light btn modal-trigger" href="#modal1">DELETE</a>
   <!-- Modal Structure -->  
   <div id="modal1" class="modal">
     <div class="modal-content">

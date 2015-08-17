@@ -79,7 +79,9 @@ miClient.funciones = miClient.funciones || {};
 		}
 		else {
 				alert("Faltan datos!");
-		}
+		}		
+	    posicionAct=-1;
+	    miClient.funciones.limpiar(); 
 	};
 
 	miClient.funciones.cargarTablaC = function() {
@@ -126,8 +128,7 @@ miClient.funciones = miClient.funciones || {};
 	    		localStorage['LClientes']=JSON.stringify(lista);
 	    	}
 	    	else {	    	
-	    		lista.splice(posicion, posicion);
-	    		console.log(lista);
+	    		lista.splice(posicion, 1);
 	    		localStorage['LClientes']=JSON.stringify(lista);	    	
 	    		miClient.funciones.cargarTablaC();	    	
 	    	}
@@ -157,24 +158,15 @@ miClient.funciones = miClient.funciones || {};
 		objUser.Tel =document.getElementById('tel').value;
 		var posicion = posicionAct;
 		//fila.parentNode.removeChild(fila);
-	    if (cont > 0)
+	    if (cont > 0 && posicion >=0)
 	    {
 	    	if (objUser.Id !="" && objUser.Nombre !="" && objUser.Tel !="") {
-	    		console.log(objUser);
 	    		var lista = new Array();
-	    		var lista = JSON.parse(localStorage['LClientes']);	    	
-	    		if (posicion == 0) {
-	    			lista.shift();
-	    			lista.splice(posicion, posicion, objUser);
-	    			localStorage['LClientes']=JSON.stringify(lista);
-	    		}
-	    		else {	    	
-	    			lista.splice(posicion, posicion, objUser);
-	    			console.log(lista);
-	    			localStorage['LClientes']=JSON.stringify(lista);	    	
-	    			miClient.funciones.cargarTablaC();	    	
-	    		}
-	    		Materialize.toast('<span>Item modificado</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;#!&quot;><a>', 5000);
+	    		var lista = JSON.parse(localStorage['LClientes']);    	
+	    		lista.splice(posicion, 1, objUser);
+	    		localStorage['LClientes']=JSON.stringify(lista);	    	
+	    		miClient.funciones.cargarTablaC();	    		    		
+	    		Materialize.toast('<span>Cliente modificado</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;#!&quot;><a>', 5000);
 	    	}
 	    	else{
 	    	miClient.funciones.cargarTablaC();

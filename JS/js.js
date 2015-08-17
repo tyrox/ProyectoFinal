@@ -4,8 +4,7 @@ function login() {
 	var password = document.getElementById('password').value;
 	//window.location.href="dash.html";
 
-	if (username != '12' || password != '12') {		
-			alert("Error");
+	if (username != '12' || password != '12') {					
 			return;
 	}
 	 else {

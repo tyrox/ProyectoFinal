@@ -61,7 +61,14 @@
                     <textarea placeholder=""id="descrip" class="materialize-textarea" required></textarea>
                     <label for="descrip">Description</label>
                 </div>
-              </div>
+                                
+            </div>
+            <!-- BOTONES --> 
+            <div >
+                  <a onclick="guardarC();" class="waves-effect waves-light btn">NEW</a>
+                  <a class="waves-effect waves-light btn" onclick="miInvo.funciones.modificar();">EDIT</a>
+                  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">DELETE</a>
+            </div>
           </form>
     </div>
     
@@ -69,12 +76,6 @@
     <div  class="card-panel teal lighten-4" id="dvcontainer">
       
     </div>
-    <!-- BOTONES --> 
-    <div >
-      <a onclick="guardarC();" class="waves-effect waves-light btn">NEW</a>
-      <a class="waves-effect waves-light btn" onclick="miInvo.funciones.modificar();">EDIT</a>
-      <a class="waves-effect waves-light btn modal-trigger" href="#modal1">DELETE</a>
-  </div>
   <!-- Modal Structure -->  
   <div id="modal1" class="modal">
     <div class="modal-content">
@@ -83,7 +84,7 @@
     </div>
     <div class="modal-footer">
       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">No</a>
-      <a onclick="miInvo.funciones.cargarTablaC()" class=" modal-action modal-close waves-effect waves-green btn-flat">Si</a>
+      <a onclick="miInvo.funciones.eliminar()" class=" modal-action modal-close waves-effect waves-green btn-flat">Si</a>
     </div>
   </div>
 </br>

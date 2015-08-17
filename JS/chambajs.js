@@ -79,7 +79,6 @@ miChamb.funciones = miChamb.funciones || {};
 	};
 	miChamb.funciones.eliminar = function (pos){
 		var posicion = posicionAct;
-		console.log(posicion);
 		var cont = miChamb.funciones.tamannoC();
 	    if (posicion >= 0 && cont>0)
 	    {
@@ -89,17 +88,19 @@ miChamb.funciones = miChamb.funciones || {};
 	    		lista.shift();
 	    		localStorage['LChambas']=JSON.stringify(lista);
 	    	}
-	    	else {	    	
-	    		lista.splice(posicion, posicion);
-	    		console.log(lista);
+	    	else {
+	    		console.log(posicion, $(pos).closest("tr").index());
+	    		lista.splice(posicion, 1);	    		
 	    		localStorage['LChambas']=JSON.stringify(lista);	    	
 	    		miChamb.funciones.cargarTablaC();	    	
 	    	}
 	    }
 	    else {	    	
-	    	
+	    	miChamb.funciones.cargarTablaC();
 	    }
-	    window.location.href="chambas.html";
+	    miChamb.funciones.cargarTablaC();
+	    posicionAct=-1;
+	    miChamb.funciones.limpiar();
 	    
 	};
 	
@@ -128,20 +129,11 @@ miChamb.funciones = miChamb.funciones || {};
 	    	if (objCham.Id !="" && objCham.Note !="" && objCham.Work !="" && objCham.Date !="") {
 	    		console.log(objCham);
 	    		var lista = new Array();
-	    		var lista = JSON.parse(localStorage['LChambas']);	    	
-	    		if (posicion == 0) {
-	    			lista.shift();
-	    			lista.splice(posicion, posicion, objCham);
-	    			localStorage['LChambas']=JSON.stringify(lista);
-	    		}
-	    		else {	    	
-	    			var tempo = lista.splice(posicion, posicion, objCham);
-	    			console.log(tempo, posicion);
-	    			console.log(lista);
-	    			localStorage['LChambas']=JSON.stringify(lista);	    	
-	    			miChamb.funciones.cargarTablaC();	    	
-	    		}
-	    		Materialize.toast('<span>Item modificado</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;#!&quot;><a>', 5000);
+	    		var lista = JSON.parse(localStorage['LChambas']);    	
+	    		var tempo = lista.splice(posicion, 1, objCham);	    			    			
+	    		localStorage['LChambas']=JSON.stringify(lista);	    	
+	    		miChamb.funciones.cargarTablaC();	    		    		
+	    		Materialize.toast('<span>Chamba modificada</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;#!&quot;><a>', 5000);
 	    	}
 	    	else{
 	    	miChamb.funciones.cargarTablaC();

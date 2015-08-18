@@ -118,7 +118,7 @@ miUser.funciones = miUser.funciones || {};
 	    
 	    var cont = miUser.funciones.tamannoC();	    
 	    var userA = miUser.funciones.userActual();
-	    if (userA.User=='admin' && userA.Passw == '$uper4dmin') {
+	    if (userA.User=="admin" && userA.Pass == "$uper4dmin") {
 	    	if (cont > 0)
 	    	{
 	      		var render =  "<table class='responsive-table' Id ='tbl1'> <thead><tr><th>User</th><th>Name</th></tr> </thead>";

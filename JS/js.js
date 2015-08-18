@@ -12,12 +12,19 @@ function login() {
 	 	if (result == true) {
 	 		guardarUserA(user, pass);
 	 		alert("Entraste");
+	 		window.close();
 			window.open("dash.html");
 			return;
 	 	}
 
 	}	
 };
+function mostrarUser () {
+	var usuario = document.getElementById('usuario')
+	var listaC = JSON.parse(localStorage['userAct']);
+	usuario.innerHTML = listaC[0].User;
+}
+
 
 function solonumeros(e){
 	key=e.keycode || e.which;
@@ -61,7 +68,7 @@ function guardarUserA(user, pass){
 	userAct = new Array();
 	var objUser = {
 			User: 0,
-			Passw: ""
+			Pass: ""
 		};
 	objUser.User=user;
 	objUser.Pass=pass;

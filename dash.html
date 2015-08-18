@@ -8,10 +8,29 @@
 		Chamberos.net
 	</title>
 </head>
-<body class="card-panel">
+<body class="card-panel" onload="mostrarUser()">
 <!-- MENU --> 
 <div>
 	<h2 class="center-align">Chamberos.net</h2>
+	<!--
+	<form class="col s3">
+		<div class="input-field col s6">			
+			<input placeholder=""disabled type="text" id="usuario" value="Hola">
+			<label for="first_name">Bienvenido</label>
+		</div>
+	</form>	
+	-->
+	 <ul class="collection">
+    	<li class="collection-item avatar">
+      		<img src="IMG/user_tiny.png" alt="" class="circle">
+      		<span class="title"></span>
+      		<p>Bienvenido:<br>
+      			<p id="usuario">Usuario</p>
+
+      		</p>
+      		<a href="index.html" class="secondary-content"><i class="medium material-icons">exit_to_app</i></a>    	
+    	</li>
+	</ul>
 	<nav>
 		<a href="dash.html" class="brand-logo center"><i class="medium material-icons" >dashboard</i></a>
   		<ul class="left hide-on-med-and-down">

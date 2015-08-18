@@ -10,6 +10,10 @@ miUser.funciones = miUser.funciones || {};
 	};
 	var temporal;
 	var posicionAct= -1;
+	var objUserA = {
+			User: 0,
+			Passw: ""
+		};
 
 	miUser.funciones.guardarC = function(){
 		var nombre = document.getElementById('nombre').value;
@@ -112,23 +116,29 @@ miUser.funciones = miUser.funciones || {};
 	};
 	miUser.funciones.cargarTablaC = function() {
 	    
-	    var cont = miUser.funciones.tamannoC();
-	    if (cont > 0)
-	    {
-	      var render =  "<table class='responsive-table' Id ='tbl1'> <thead><tr><th>User</th><th>Name</th></tr> </thead>";
-	        render+="<tbody>";
-	      var listaC = JSON.parse(localStorage['LUser']);
-	        for (i = 0; i < cont; i++) {
-	            var obj =  listaC[i];
+	    var cont = miUser.funciones.tamannoC();	    
+	    var userA = miUser.funciones.userActual();
+	    if (userA.User=='admin' && userA.Passw == '$uper4dmin') {
+	    	if (cont > 0)
+	    	{
+	      		var render =  "<table class='responsive-table' Id ='tbl1'> <thead><tr><th>User</th><th>Name</th></tr> </thead>";
+	        	render+="<tbody>";
+	      		var listaC = JSON.parse(localStorage['LUser']);
+	        	for (i = 0; i < cont; i++) {
+	            	var obj =  listaC[i];
 	                  render += "<tr onclick=miUser.funciones.cargar(this);>";
 	                  render += "<td>" + obj.Id + "</td>";
 	                  render+= "<td>" + obj.Nombre + " </td>";
 	                  render += "</tr>";
-	        }
-	          render+="</tbody";
-	        render+="</table>";
-	        dvcontainer.innerHTML = render;
-	    }
+	        	}
+	          	render+="</tbody";
+	        	render+="</table>";
+	        	dvcontainer.innerHTML = render;
+	    	}
+		}
+		else {
+			window.location.href="dash.html";
+		}
 	};
 	miUser.funciones.cargar = function (pos){
 		if (temporal!=null) {
@@ -179,6 +189,18 @@ miUser.funciones = miUser.funciones || {};
 		document.getElementById('nombre').value='';
 		document.getElementById('pass1').value='';
 		document.getElementById('pass2').value='';
-	}
+	};
+	miUser.funciones.userActual = function  () {
+
+		if (localStorage.getItem('userAct') == null) {
+			return objUserA;
+
+		}
+		else{
+			var listaC = JSON.parse(localStorage['userAct']);
+			return listaC[0];
+		}
+
+	};
 
 	

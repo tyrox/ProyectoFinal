@@ -130,8 +130,7 @@ miInvo.funciones = miInvo.funciones || {};
 	    else {	    	
 	    	
 	    }
-	    window.location.href="invoices.html";
-	    
+	    window.location.href="invoices.html";	    
 	};
 	miInvo.funciones.miVarlor = function  (pos) {
 		//busca el valor de la segunda columna (id)

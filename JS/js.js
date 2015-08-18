@@ -1,19 +1,30 @@
 
-function login() {
-	var username = document.getElementById('user').value;
-	var password = document.getElementById('password').value;
+function login() {	
+	var user = document.getElementById('user').value;
+	var pass = document.getElementById('password').value;
 	//window.location.href="dash.html";
 
-	if (username != '12' || password != '12') {					
+	if (user == '' || pass == '') {			
 			return;
 	}
 	 else {
-		alert("Entraste");
-		window.open("dash.html");
-		return;
-		
+	 	var result = verificarUser(user, pass);
+	 	if (result == true) {
+	 		guardarUserA(user, pass);
+	 		alert("Entraste");
+	 		window.close();
+			window.open("dash.html");
+			return;
+	 	}
+
 	}	
 };
+function mostrarUser () {
+	var usuario = document.getElementById('usuario')
+	var listaC = JSON.parse(localStorage['userAct']);
+	usuario.innerHTML = listaC[0].User;
+}
+
 
 function solonumeros(e){
 	key=e.keycode || e.which;
@@ -52,4 +63,41 @@ function agregarFila(){
 
 	destino.appendChild(tr);
 	n_fila++;
-}
+};
+function guardarUserA(user, pass){
+	userAct = new Array();
+	var objUser = {
+			User: 0,
+			Pass: ""
+		};
+	objUser.User=user;
+	objUser.Pass=pass;
+	userAct.splice(0, 1, objUser);
+	localStorage['userAct']=JSON.stringify(userAct);
+};
+function verificarUser(user, pass){
+	var result = false;
+	if (localStorage.getItem('LUser') != null || (user=='admin' && pass == '$uper4dmin')) {		
+		if (user=='admin' && pass == '$uper4dmin') {
+			result =true;
+			return result;
+		}
+		else {
+			var listaC = JSON.parse(localStorage['LUser']);
+			for (var i = 0; i < listaC.length; i++) {
+				if (listaC[i].Id ==user && listaC[i].Pass1 == pass) {				
+					result =true;
+					return result;
+				}
+			}
+			return result;
+		}
+	}
+	else{
+		return result;
+	}
+};
+
+
+
+

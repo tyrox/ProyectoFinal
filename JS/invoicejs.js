@@ -1,5 +1,6 @@
 var miInvo = miInvo || {}
 miInvo.funciones = miInvo.funciones || {};
+
 	var solonumeros = function (e){
 		key=e.keycode || e.which;
 		teclado=String.fromCharCode(key);
@@ -26,6 +27,25 @@ miInvo.funciones = miInvo.funciones || {};
 	};	
 	var temporal;
 	var posicionAct= -1;
+
+	function cargarDataL () {
+		if (JSON.parse(localStorage['LClientes']) != null) {			
+			var mycars = new Array();
+			$(document).ready( function() {
+    			$(mycars).each( function(index, item) {
+        			var option = $('<option value="'+item+'"></option>');
+        			$('#id').append(option);
+    			})
+			})
+			var LClientes=JSON.parse(localStorage['LClientes']);
+			$(document).ready( function() {
+    			$(LClientes).each( function(index, item) {
+        			var option = $('<option value="'+item.Id+'"></option>');
+        			$('#id').append(option);
+    			})
+			})
+		}
+	};
 
 	function guardarC(){		
 		var id = document.getElementById('id').value;
@@ -100,11 +120,11 @@ miInvo.funciones = miInvo.funciones || {};
 	    		Materialize.toast('<span>Invoice modificado</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;#!&quot;><a>', 5000);
 	    	}
 	    	else{
-	    	miInvo.funciones.cargarTablaC();
+	    	
 	   	 }
 	    }
 	    else {
-	    	miInvo.funciones.cargarTablaC();
+	    	
 	    }
 	    posicionAct=-1;
 	    miInvo.funciones.limpiar();
@@ -130,8 +150,7 @@ miInvo.funciones = miInvo.funciones || {};
 	    else {	    	
 	    	
 	    }
-	    window.location.href="invoices.html";
-	    
+	    window.location.href="invoices.html";	    
 	};
 	miInvo.funciones.miVarlor = function  (pos) {
 		//busca el valor de la segunda columna (id)
@@ -161,9 +180,10 @@ miInvo.funciones = miInvo.funciones || {};
 	    var cont = miInvo.funciones.tamannoC();
 	    if (cont > 0)
 	    {
-	      var render =  "<table class='responsive-table' Id ='tbl1'><thead><tr><th>Id Client</th><th>Description</th><th>Date</th><th>Amount $</th></tr> </thead>";
+	    	//cargarDataL();
+	      	var render =  "<table class='responsive-table' Id ='tbl1'><thead><tr><th>Id Client</th><th>Description</th><th>Date</th><th>Amount $</th></tr> </thead>";
 	        render+="<tbody>";
-	      var listaC = JSON.parse(localStorage['LInvoice']);
+	      	var listaC = JSON.parse(localStorage['LInvoice']);
 	        for (i = 0; i < cont; i++) {
 	            var obj =  listaC[i];
 	                  render += "<tr onclick=miInvo.funciones.cargar(this);>";

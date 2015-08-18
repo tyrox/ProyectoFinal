@@ -130,7 +130,6 @@ miChamb.funciones = miChamb.funciones || {};
 	    if (cont > 0 && posicion >=0)
 	    {
 	    	if (objCham.Id !="" && objCham.Note !="" && objCham.Work !="" && objCham.Date !="") {
-	    		console.log(objCham);
 	    		var lista = new Array();
 	    		var lista = JSON.parse(localStorage['LChambas']);    	
 	    		var tempo = lista.splice(posicion, 1, objCham);	    			    			
@@ -203,9 +202,8 @@ miChamb.funciones = miChamb.funciones || {};
 	}; 
 	miChamb.funciones.cambiar_color_out = function (celda){ 
    		celda.style.backgroundColor="#b2dfdb" 
-	};
-		miChamb.funciones.tam*/
-annoC = function () {
+	};*/
+		miChamb.funciones.tamannoC = function () {
 		if (localStorage.getItem('LChambas') == null) {
 			return 0;
 		}

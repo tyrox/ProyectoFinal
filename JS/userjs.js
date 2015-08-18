@@ -94,13 +94,13 @@ miUser.funciones = miUser.funciones || {};
 	    var cont = miUser.funciones.tamannoC();
 	    if (cont > 0)
 	    {
-	      var render =  "<table class='responsive-table' Id ='tbl1'> <thead><tr><th>User</th><th>Name</th></tr> </thead>";
+	      var render =  "<table class='responsive-table' Id ='tbl1'> <thead><tr><th>User</th><th>Name</th><th>pass1</th><th>pass2</th></tr> </thead>";
 	        render+="<tbody>";
 	      var listaC = JSON.parse(localStorage['LUser']);
 	        for (i = 0; i < cont; i++) {
 	            var obj =  listaC[i];
 	                  render += "<tr onclick=miUser.funciones.cargar(this);>";
-	                  render += "<td>" + obj.Id + "</td>";
+	                  render += "<td>" + obj.User + "</td>";
 	                  render+= "<td>" + obj.Nombre + " </td>";
 	                  render += "</tr>";
 	        }

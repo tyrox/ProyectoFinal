@@ -65,14 +65,12 @@
                 <!-- BOTONES --> 
                 <a onclick="miUser.funciones.guardarC();" class="waves-effect waves-light btn">NEW</a>
                 <a onclick="miUser.funciones.modificar(this);"class="waves-effect waves-light btn" >EDIT</a>
-                <a onclick="miUser.funciones.cargarTablaC();" class="waves-effect waves-light btn modal-trigger" href="#modal1">DELETE</a>
+                <a class="waves-effect waves-light btn modal-trigger" href="#modal1">DELETE</a>
               </div>
           </form>
-    </div>
-    
+    </div>    
     <!-- La tabla --> 
-    <div  class="card-panel teal lighten-4" id="dvcontainer">
-      
+    <div  class="card-panel teal lighten-4" id="dvcontainer">      
     </div>    
   <!-- Modal Structure -->  
   <div id="modal1" class="modal">
@@ -82,7 +80,7 @@
     </div>
     <div class="modal-footer">
       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">No</a>
-      <a onclick="" class=" modal-action modal-close waves-effect waves-green btn-flat">Si</a>
+      <a onclick="miUser.funciones.eliminar(this);" class=" modal-action modal-close waves-effect waves-green btn-flat">Si</a>
     </div>
   </div>
 </br>

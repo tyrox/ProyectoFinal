@@ -11,7 +11,7 @@ miUser.funciones = miUser.funciones || {};
 	var temporal;
 	var posicionAct= -1;
 
-	function guardarC(){
+	miUser.funciones.guardarC = function(){
 		var nombre = document.getElementById('nombre').value;
 		var id = document.getElementById('id').value;
 		var pass1 = document.getElementById('pass1').value;
@@ -31,9 +31,9 @@ miUser.funciones = miUser.funciones || {};
 					objUser.Pass1=pass1;
 					objUser.Pass2=pass2;
 					LUser.push(objUser);
-					localStorage['LUser']=JSON.stringify(LUser);
-					console.log(LUser);
-					cargarTablaC();
+					localStorage['LUser']=JSON.stringify(LUser);		
+					miUser.funciones.cargarTablaC();
+					miUser.funciones.limpiar();
 				}
 				else{
 					var LUser=JSON.parse(localStorage['LUser']);
@@ -43,8 +43,8 @@ miUser.funciones = miUser.funciones || {};
 					objUser.Pass2=pass2;
 					LUser.push(objUser);
 					localStorage['LUser']=JSON.stringify(LUser);
-					console.log(LUser);
-					cargarTablaC();
+					miUser.funciones.cargarTablaC();
+					miUser.funciones.limpiar();
 				}
 			}
 			else {
@@ -55,8 +55,7 @@ miUser.funciones = miUser.funciones || {};
 		else {
 				alert("Faltan datos!");
 		}
-		posicionAct=-1;
-	    miUser.funciones.limpiar();
+		posicionAct=-1;	    
 	};
 	miUser.funciones.modificar = function (pos){
 		
@@ -88,6 +87,28 @@ miUser.funciones = miUser.funciones || {};
 	    posicionAct=-1;
 	    miUser.funciones.limpiar();
 	    miUser.funciones.cargarTablaC();
+	};
+	miUser.funciones.eliminar = function (pos){
+		var posicion = posicionAct;
+		var cont = miUser.funciones.tamannoC();
+	    if (posicion >= 0 && cont>0)
+	    {
+	    	var lista = new Array();
+	    	var lista = JSON.parse(localStorage['LUser']);	    	
+	    	if (posicion == 0) {
+	    		lista.shift();
+	    		localStorage['LUser']=JSON.stringify(lista);
+	    	}
+	    	else {	    	
+	    		lista.splice(posicion, 1);
+	    		localStorage['LUser']=JSON.stringify(lista);	    	
+	    		miUser.funciones.cargarTablaC();	    	
+	    	}
+	    }
+	    else {	    	
+	    	
+	    }
+	    window.location.href="user.html";	    
 	};
 	miUser.funciones.cargarTablaC = function() {
 	    

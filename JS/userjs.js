@@ -12,8 +12,8 @@ miUser.funciones = miUser.funciones || {};
 	var posicionAct= -1;
 
 	function guardarC(){
-		var nombre = document.getElementById('nombre').value;
 		var id = document.getElementById('id').value;
+		var nombre = document.getElementById('nombre').value;
 		var pass1 = document.getElementById('pass1').value;
 		var pass2 = document.getElementById('pass2').value;
 		if (nombre != '' && id != '' && pass1 !='' && pass2 !='') {

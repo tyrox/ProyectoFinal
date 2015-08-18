@@ -30,7 +30,8 @@ miChamb.funciones = miChamb.funciones || {};
 	var temporal;
 	var posicionAct = -1;
 
-	miChamb.funciones.guardarC = function (){		
+	miChamb.funciones.guardarC = function (){	
+	//funcion utilizada para guardar todos los datos en el localstorage	
 		var id = document.getElementById('id').value;
 		var fecha = document.getElementById('date').value;
 		var notes = document.getElementById('note').value;
@@ -78,6 +79,7 @@ miChamb.funciones = miChamb.funciones || {};
 		miChamb.funciones.limpiar();
 	};
 	miChamb.funciones.eliminar = function (pos){
+		//funcion  utilizada para eliminar los datos y colocar 
 		var posicion = posicionAct;
 		var cont = miChamb.funciones.tamannoC();
 	    if (posicion >= 0 && cont>0)
@@ -105,6 +107,7 @@ miChamb.funciones = miChamb.funciones || {};
 	};
 	
 	miChamb.funciones.cargar = function (pos){
+		//funcion que se utiliza para cargar los datos y colocarlos en la tabla
 		if (temporal!=null) {
 			temporal.style.backgroundColor="#b2dfdb"; 	
 		}		
@@ -115,7 +118,7 @@ miChamb.funciones = miChamb.funciones || {};
 		miChamb.funciones.miVarlor(temporal);
 	};
 	miChamb.funciones.modificar = function (pos){
-		
+		//funcion q se utiliza para modificar los los datos 
 		var cont = miChamb.funciones.tamannoC();
 		var nuevo = new Array();
 		objCham.Id =document.getElementById('id').value;
@@ -201,8 +204,8 @@ miChamb.funciones = miChamb.funciones || {};
 	miChamb.funciones.cambiar_color_out = function (celda){ 
    		celda.style.backgroundColor="#b2dfdb" 
 	};
-	*/
-	miChamb.funciones.tamannoC = function () {
+		miChamb.funciones.tam*/
+annoC = function () {
 		if (localStorage.getItem('LChambas') == null) {
 			return 0;
 		}

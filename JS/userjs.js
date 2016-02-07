@@ -15,12 +15,12 @@ miUser.funciones = miUser.funciones || {};
 			Passw: ""
 		};
 
-<<<<<<< HEAD
-	function guardarC(){
-=======
+//<<<<<<< HEAD
+	//function guardarC(){
+//=======
 	miUser.funciones.guardarC = function(){
-		var nombre = document.getElementById('nombre').value;
->>>>>>> origin/master
+		//var nombre = document.getElementById('nombre').value;
+//>>>>>>> origin/master
 		var id = document.getElementById('id').value;
 		var nombre = document.getElementById('nombre').value;
 		var pass1 = document.getElementById('pass1').value;
@@ -121,7 +121,7 @@ miUser.funciones = miUser.funciones || {};
 	};
 	miUser.funciones.cargarTablaC = function() {
 	    
-<<<<<<< HEAD
+//<<<<<<< HEAD
 	    var cont = miUser.funciones.tamannoC();
 	    if (cont > 0)
 	    {
@@ -130,7 +130,7 @@ miUser.funciones = miUser.funciones || {};
 	      var listaC = JSON.parse(localStorage['LUser']);
 	        for (i = 0; i < cont; i++) {
 	            var obj =  listaC[i];
-=======
+//=======
 	    var cont = miUser.funciones.tamannoC();	    
 	    var userA = miUser.funciones.userActual();
 	    if (userA.User=="admin" && userA.Pass == "$uper4dmin") {
@@ -141,7 +141,7 @@ miUser.funciones = miUser.funciones || {};
 	      		var listaC = JSON.parse(localStorage['LUser']);
 	        	for (i = 0; i < cont; i++) {
 	            	var obj =  listaC[i];
->>>>>>> origin/master
+//>>>>>>> origin/master
 	                  render += "<tr onclick=miUser.funciones.cargar(this);>";
 	                  render += "<td>" + obj.User + "</td>";
 	                  render+= "<td>" + obj.Nombre + " </td>";
